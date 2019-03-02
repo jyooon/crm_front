@@ -15,13 +15,15 @@
   "dependencies": {
     "devextreme": "^18.2.6",
     "devextreme-vue": "^18.2.6",
+    "es6-promise": "^4.2.6",
     "scheduler": "^0.13.3",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.2",
+    "@types/webpack-env": "^1.13.7",
+    "autoprefixer": "^7.2.6",
     "babel-core": "^6.22.1",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-jest": "^21.0.2",
