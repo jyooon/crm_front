@@ -94,9 +94,9 @@
                 </ul>
                 <div class="chatting_wrap">
                   <div class="write">
-                    <textarea placeholder="보낼 메시지를 입력해 주세요.">{{this.msg}}</textarea>
+                    <textarea placeholder="보낼 메시지를 입력해 주세요.">{{this.submit_msg}}</textarea>
                   </div>
-                  <button class="chat_submit" v-on:click="chat_submit(this.msg)">보내기</button>
+                  <button class="chat_submit" v-on:click="chat_submit()">보내기</button>
                 </div>
               </div>
             </div>
@@ -126,7 +126,7 @@
         details : [],
         is_detail: false,
         target_id:-1,
-        msg: '',
+        submit_msg: '',
 
       }
     },computed: {
@@ -177,12 +177,12 @@
           this.details = result.data.data.chat_detail;
         })
       },
-      chat_submit:function(msg){
+      chat_submit:function(){
         //채팅 보내는 곳, api 들어와야 수정 가능
 
-        // submit 누르면갱신 하고 msg = ''
+        // 보내기버튼 누르면갱신 & msg = ''
         this.chat_detail();
-        this.msg  = '';
+        this.submit_msg  = '';
       }
 
     },
