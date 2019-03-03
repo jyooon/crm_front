@@ -94,7 +94,7 @@
                 </ul>
                 <div class="chatting_wrap">
                   <div class="write">
-                    <textarea placeholder="보낼 메시지를 입력해 주세요.">{{this.submit_msg}}</textarea>
+                    <input placeholder="보낼 메시지를 입력해 주세요." v-model="submit_msg"/>
                   </div>
                   <button class="chat_submit" v-on:click="chat_submit()">보내기</button>
                 </div>
@@ -127,7 +127,6 @@
         is_detail: false,
         target_id:-1,
         submit_msg: '',
-
       }
     },computed: {
 
