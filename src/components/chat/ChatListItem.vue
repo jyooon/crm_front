@@ -1,38 +1,38 @@
 <template>
   <div class="col_body chat_list">
     <div id="app">
-        <ul v-for="post in posts" v-bind:key="post.id">
-          <li v-on:click="chat_detail(post.id)">
-            <div class="list_item">
-              <div class="list_top">
-                <div class="thumb">
-                  <div class="thumb_img">
-                    <img src="../../images/sp_mh.png">
-                  </div>
-                  <span class="icon_sns kt"></span>
+      <ul v-for="post in posts" v-bind:key="post.id">
+        <li v-on:click="chat_detail(post.target_id)">
+          <div class="list_item">
+            <div class="list_top">
+              <div class="thumb">
+                <div class="thumb_img">
+                  <img src="../../images/sp_mh.png">
                 </div>
-                <div class="name_wrap">
-                  <div class="nickname"><span>({{post.talkType}}) </span>{{post.target_id}}</div>
-                  <div class="date">{{post.timestamp}}</div>
-                </div>
-                <div class="icon_more">
-                  <a href="#">
-                    <img src="../../images/icon_more_h.png">
-                  </a>
-                </div>
+                <span class="icon_sns kt"></span>
               </div>
-              <div class="list_md">
-                <div class="talk_desc">{{post.lastMsg}} </div>
-                <span class="new_count" v-if="post.readFlag != 0">{{post.readFlag}}</span>
+              <div class="name_wrap">
+                <div class="nickname"><span>({{post.talkType}}) </span>{{post.target_id}}</div>
+                <div class="date">{{post.timestamp}}</div>
               </div>
-              <div class="list_bt">
-                <span class="badge black_list">black</span>
+              <div class="icon_more">
+                <a href="#">
+                  <img src="../../images/icon_more_h.png">
+                </a>
               </div>
             </div>
-          </li>
-        </ul>
-      </div>
-      <!--<button v-else v-on:click="searchTerm">글 불러오기</button>-->
+            <div class="list_md">
+              <div class="talk_desc">{{post.lastMsg}} </div>
+              <span class="new_count" v-if="post.readFlag != 0">{{post.readFlag}}</span>
+            </div>
+            <div class="list_bt">
+              <span class="badge black_list">black</span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--<button v-else v-on:click="searchTerm">글 불러오기</button>-->
   </div>
 </template>
 
@@ -46,8 +46,7 @@
     name: "ChatListItem",
     data: function () {
       return {
-        posts: [],
-        detail: []
+        posts: []
       }
     },
     mounted(){
@@ -76,13 +75,14 @@
           this.posts = result.data.data.chat_list
         })
       },
-      chat_detail:function (id){
+      chat_detail:function (target_id){
+
+        console.log(target_id)
         // using JSONPlaceholder
         const baseURI = 'http://13.209.76.116';
-        this.$http.get(`${baseURI}/chat_detail.php?idx=${id}`)
+        this.$http.get(`${baseURI}/chat_detail.php?target_id=${target_id}`)
         .then((result) => {
-          console.log(id)
-          this.detail = result.data.data.chat_detail
+          console.log(result)
         })
       }
     },
